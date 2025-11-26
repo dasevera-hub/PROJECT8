@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLSU Hotel | Admin Dashboard</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">SLSU HOTEL ADMIN</div>
+    <ul class="nav-links">
+      <li><a href="mainpage.html">Main Page</a></li>
+      <li><a href="admin.html" class="active">Dashboard</a></li>
+      <li><a href="/logout" class="logout-btn">Logout</a></li>
+    </ul>
+  </nav>
+
+  <header class="dashboard-header">
+    <h1>Reservation Dashboard</h1>
+    <p>Manage and monitor hotel bookings.</p>
+  </header>
+
+  <section class="filter-section">
+    <input type="text" id="searchInput" placeholder="Search by name or email...">
+    <select id="roomFilter">
+      <option value="">All Room Types</option>
+      <option value="Deluxe">Deluxe Room</option>
+      <option value="Family">Family Suite</option>
+      <option value="Executive">Executive Suite</option>
+    </select>
+  </section>
+
+  <section class="table-section">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Room Type</th>
+          <th>Check-in</th>
+          <th>Check-out</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="reservationTable">
+        <tr><td colspan="8">Loading reservations...</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 SLSU Hotel Admin Dashboard. All Rights Reserved.</p>
+  </footer>
+
+  <script src="admin.js"></script>
+</body>
+</html>

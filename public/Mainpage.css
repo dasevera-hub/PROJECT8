@@ -1,0 +1,281 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+   background: url('https://i.pinimg.com/736x/22/f8/20/22f8201e79bab9e0a3fc92880f81a1f8.jpg') no-repeat center center/cover;
+  color: #333;
+  padding-top: 100px; /* prevent navbar overlapping hero section */
+}
+
+/* Header / Navbar */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #058717;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #ffcc00;
+}
+
+
+.login-btn, .signup-btn {
+  background-color: #ffcc00;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: black !important;
+}
+
+.login-btn:hover, .signup-btn:hover {
+  background-color: #ffdd44;
+}
+
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links .username {
+  cursor: pointer;
+  padding: 8px 12px;
+  background-color: #ffcc00;
+  border-radius: 6px;
+  font-weight: bold;
+  color: black;
+}
+
+.nav-links .username:hover {
+  background-color: #ffdd44;
+}
+
+
+.nav-links .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  min-width: 120px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.nav-links .dropdown li a {
+  display: block;
+  padding: 10px 12px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.nav-links .dropdown li a:hover {
+  background-color: #f2f2f2;
+}
+
+/* Show dropdown on hover */
+.nav-links li:hover .dropdown {
+  display: block;
+}
+
+/* Hero Section */
+.hero {
+  height: 60vh;
+  background: url('https://images.unsplash.com/photo-1501117716987-c8e1ecb210fa') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px 8px black;
+}
+
+.hero h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #058717;
+  padding: 12px 30px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.btn:hover {
+  background: #0055aa;
+}
+
+/* Services / Rooms */
+.services, .rooms {
+  padding: 60px 50px;
+  text-align: center;
+}
+
+.services h2, .rooms h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #f2f2f2;
+}
+
+.service-boxes, .room-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.service-item, .room {
+  background: white;
+  padding: 20px;
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-item h3, .room h3 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #058717;
+}
+
+/* Footer */
+.footer {
+  background-color: #058717;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Reservation form */
+.reservation-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(-20px);
+  width: 400px;
+  max-width: 90%;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  display: none;
+  opacity: 0;
+  transition: all 0.4s ease;
+  font-family: Arial, sans-serif;
+}
+
+/* Show animation */
+.reservation-form.show {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0);
+}
+
+.overlay.show {
+  display: block;
+  opacity: 1;
+}
+
+.reservation-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.reservation-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.reservation-form input,
+.reservation-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.reservation-form input:focus,
+.reservation-form select:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.reserve-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.reserve-btn:hover {
+  background-color: #0056b3;
+}
