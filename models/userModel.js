@@ -1,18 +1,18 @@
-const pool = require('../db');
+const pool = require("../db");
 
-async function createUser(username, email, phone, hashedPassword, role='user') {
+async function createUser(user) {
   return pool.query(
-    'INSERT INTO users (username,email,phone,password,role) VALUES ($1,$2,$3,$4,$5)',
-    [username, email, phone, hashedPassword, role]
+    "INSERT INTO users (username,email,phone,password,role) VALUES ($1,$2,$3,$4,$5)",
+    [user.username, user.email, user.phone, user.password, user.role]
   );
 }
 
-async function findUserByEmailOrUsername(identifier) {
+async function findUser(identifier) {
   const result = await pool.query(
-    'SELECT id, username, role, password FROM users WHERE email=$1 OR username=$1',
+    "SELECT * FROM users WHERE email=$1 OR username=$1",
     [identifier]
   );
   return result.rows[0];
 }
 
-module.exports = { createUser, findUserByEmailOrUsername };
+module.exports = { createUser, findUser };

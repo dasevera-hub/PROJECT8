@@ -1,0 +1,116 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Segoe UI, "Tahoma", Geneva, Verdana, sans-serif;
+}
+
+body {
+  padding-top: 100px;
+  background: url('https://i.pinimg.com/736x/22/f8/20/22f8201e79bab9e0a3fc92880f81a1f8.jpg') no-repeat center center/cover;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #058717;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active-link {
+  color: #ffcc00;
+}
+
+.signup-btn {
+  background-color: #ffcc00;
+  padding: 8px 14px;
+  border-radius: 6px;
+  color: black !important;
+  font-weight: bold;
+}
+
+.signup-btn:hover {
+  background-color: #ffdd44;
+}
+
+/* Contact Container */
+.contact-container {
+  max-width: 700px;
+  background-color: rgba(255,255,255,0.9);
+  margin: 40px auto;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.contact-container h1, .contact-container h2 {
+  text-align: center;
+  color: #058717;
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+form input:focus, form textarea:focus {
+  border-color: #5563DE;
+  box-shadow: 0 0 5px rgba(85,99,222,0.3);
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  background: #0bb113;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background: #08ad20;
+}

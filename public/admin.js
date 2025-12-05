@@ -5,12 +5,23 @@ const roomFilter = document.getElementById('roomFilter');
 let allReservations = [];
 
 // ================================
+// Helper: Escape HTML to prevent XSS
+// ================================
+function escapeHTML(str) {
+  if (!str) return '';
+  return str.replace(/[&<>"']/g, function(m) {
+    return ({
+      '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+    })[m];
+  });
+}
+
+// ================================
 // LOAD ALL RESERVATIONS
 // ================================
 async function loadReservations() {
   try {
     tableBody.innerHTML = `<tr><td colspan="8">Loading reservations...</td></tr>`;
-
     const res = await fetch('/admin/reservations'); 
     if (!res.ok) throw new Error('Failed to load');
 
@@ -21,7 +32,7 @@ async function loadReservations() {
     renderTable(allReservations);
 
   } catch (err) {
-    tableBody.innerHTML = `<tr><td colspan="8" style="color:red;">Error loading reservations: ${err.message}</td></tr>`;
+    tableBody.innerHTML = `<tr><td colspan="8" style="color:red;">Error loading reservations</td></tr>`;
     console.error(err);
   }
 }
@@ -30,7 +41,7 @@ async function loadReservations() {
 // RENDER TABLE
 // ================================
 function renderTable(data) {
-  if (data.length === 0) {
+  if (!data.length) {
     tableBody.innerHTML = `<tr><td colspan="8">No reservations found.</td></tr>`;
     return;
   }
@@ -41,9 +52,9 @@ function renderTable(data) {
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>${r.id}</td>
-      <td>${r.fullname}</td>
-      <td>${r.email}</td>
-      <td>${r.room_type}</td>
+      <td>${escapeHTML(r.fullname)}</td>
+      <td>${escapeHTML(r.email)}</td>
+      <td>${escapeHTML(r.room_type)}</td>
       <td>${r.checkin}</td>
       <td>${r.checkout}</td>
       <td><span class="status ${r.status ? r.status.toLowerCase() : 'pending'}">${r.status || 'Pending'}</span></td>
@@ -72,13 +83,17 @@ function filterReservations() {
   renderTable(filtered);
 }
 
-searchInput.addEventListener('input', filterReservations);
+searchInput.addEventListener('input', debounce(filterReservations, 200));
 roomFilter.addEventListener('change', filterReservations);
 
-
+// ================================
+// BUTTON ACTIONS
+// ================================
 tableBody.addEventListener('click', async (e) => {
   const id = e.target.dataset.id;
   if (!id) return;
+
+  e.target.disabled = true; // prevent double click
 
   try {
     if (e.target.classList.contains('approve-btn')) {
@@ -93,7 +108,20 @@ tableBody.addEventListener('click', async (e) => {
   } catch (err) {
     alert('Action failed. Check console.');
     console.error(err);
+  } finally {
+    e.target.disabled = false;
   }
 });
+
+// ================================
+// Debounce helper
+// ================================
+function debounce(fn, delay) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
 
 loadReservations();

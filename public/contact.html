@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="logo">SLSU HOTEL</div>
+        <ul class="nav-links">
+            <li><a href="Mainpage.html">Home</a></li>
+            <li><a href="rooms.html">Rooms</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html" class="active-link">Contact</a></li>
+            <li><a href="signup.html" class="signup-btn">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        <p>We’d love to hear from you! Reach out to us via the following channels:</p>
+
+        <div class="contact-info">
+            <p><strong>Phone:</strong> +63 912 345 6789</p>
+            <p><strong>Email:</strong> info@slsuhotel.com</p>
+            <p><strong>Address:</strong> Quezon, Lucban, Southern Luzon State University</p>
+        </div>
+
+        <h2>Send us a Message</h2>
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="login-btn">Send Message</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e){
+            e.preventDefault();
+            alert('Message sent! Thank you for contacting us.');
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>
